@@ -45,16 +45,16 @@ module.exports = {
                     value: fetched.tag,
                     inline: true
                 },
-                    {
-                        name: 'Executed by:',
-                        value: interaction.user.tag,
-                        inline: true
-                    },
-                    {
-                        name: 'Reason:',
-                        value: reason,
-                        inline: true
-                    })
+                {
+                    name: 'Executed by:',
+                    value: interaction.user.tag,
+                    inline: true
+                },
+                {
+                    name: 'Reason:',
+                    value: reason,
+                    inline: true
+                })
                 .setFooter({ text: `Made with ❤️ by Itz_Toothless#8135`, iconURL: `${client.user.displayAvatarURL({ dynamic: true })}` })
                 .setTimestamp();
             return await interaction.reply({ embeds: [unbanEmbed] });
