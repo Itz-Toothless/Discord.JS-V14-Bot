@@ -20,23 +20,27 @@ module.exports = {
                     value: server.name,
                     inline: true
                 },
-                    {
-                        name: 'Server ID',
-                        value: server.id,
-                        inline: true
-                    }, {
+                {
+                    name: 'Server ID',
+                    value: server.id,
+                    inline: true
+                },
+                {
                     name: 'Server Owner',
                     value: owner.user.tag,
                     inline: true
-                }, {
+                },
+                {
                     name: 'Server Created At',
                     value: `**<t:${Math.round(parseInt(server.createdTimestamp) / 1000)}:F>**`,
                     inline: true
-                }, {
+                },
+                {
                     name: 'Server Region',
-                    value: server.region,
+                    value: server.preferredLocale,
                     inline: true
-                }, {
+                }, 
+                {
                     name: 'Server Verification Level',
                     value: server.verificationLevel,
                     inline: true
