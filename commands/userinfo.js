@@ -16,21 +16,10 @@ module.exports = {
                 .setTitle('User Stats')
                 .setDescription('**Here are some stats about the User**')
                 .setThumbnail(`${user.displayAvatarURL({ dynamic: true }) ? user.displayAvatarURL({ dynamic: true }) : interaction.member.displayAvatarURL({ dynamic: true })}`)
-                .addFields({
-                    name: 'User Name',
-                    value: user.tag,
-                    inline: true
-                },
-                {
-                    name: 'User ID',
-                    value: user.id,
-                    inline: true
-                }, 
-                {
-                    name: 'User Created At',
-                    value: `**<t:${Math.round(parseInt(user.createdTimestamp) / 1000)}:F>**`,
-                    inline: true
-                })
+                .addFields({ name: 'User Name', value: user.tag, inline: true },
+                    { name: 'User ID', value: user.id, inline: true },
+                    { name: 'User Created At', value: `**<t:${Math.round(parseInt(user.createdTimestamp) / 1000)}:F>**`, inline: true }
+                )
                 .setTimestamp()
                 .setFooter({ text: 'Made with ❤️ by Itz_Toothless#8135', iconURL: client.user.displayAvatarURL({ dynamic: true }) });
             return await interaction.reply({ embeds: [userEmbed] });
