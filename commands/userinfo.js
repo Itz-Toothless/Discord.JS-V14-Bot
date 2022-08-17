@@ -21,11 +21,12 @@ module.exports = {
                     value: user.tag,
                     inline: true
                 },
-                    {
-                        name: 'User ID',
-                        value: user.id,
-                        inline: true
-                    }, {
+                {
+                    name: 'User ID',
+                    value: user.id,
+                    inline: true
+                }, 
+                {
                     name: 'User Created At',
                     value: `**<t:${Math.round(parseInt(user.createdTimestamp) / 1000)}:F>**`,
                     inline: true
