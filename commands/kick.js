@@ -29,9 +29,10 @@ module.exports = {
                 await interaction.reply({ content: "I cannot kick `" + user.tag + "` because my Permissions are insufficient!", ephemeral: true })
                 return
             }
+
             await interaction.guild.members.kick(user, { reason: reason });
             let kickEmbed = new EmbedBuilder()
-                .setColor(0x0099FF)
+                .setColor(0x7289DA)
                 .setAuthor({ name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
                 .setTitle('Kick')
                 .setDescription('**Someone has been kicked! Here are some details:**')
