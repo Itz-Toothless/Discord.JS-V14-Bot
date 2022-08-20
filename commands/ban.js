@@ -2,7 +2,7 @@ const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder } = require('disc
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("ban-user")
+        .setName("ban")
         .setDescription("Bans a user from the server")
         .addUserOption(option =>
             option.setName("user").setDescription("The user to ban").setRequired(true))
