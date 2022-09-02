@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 require('dotenv').config();
+const chalk = require('chalk');
 
 const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildPresences]
@@ -18,7 +19,7 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
-    console.log('Ready!');
+    console.log(`${client.user.tag} is up and ready!`);
 });
 
 client.on('interactionCreate', async interaction => {
@@ -31,7 +32,7 @@ client.on('interactionCreate', async interaction => {
         await command.execute(client, interaction);
     } catch (error) {
         await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-        console.error(error);
+        console.log(chalk.bgRedBright(error));
     }
 });
 
