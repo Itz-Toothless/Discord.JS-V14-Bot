@@ -127,7 +127,7 @@ module.exports = {
                             { name: 'User Created at', value: `**<t:${Math.round(parseInt(user.user.createdTimestamp) / 1000)}:F>**`, inline: true },
                             { name: 'User Joined at:', value: `**<t:${Math.round(parseInt(user.joinedTimestamp) / 1000)}:F>**` },
                             { name: 'Roles', value: `${user.roles.cache.map(r => r.name).join('\n')}` },
-                            { name: 'Admin', value: `${user.permissions.has(PermissionsBitField.Flags.ADMINISTRATOR) ? "✅" : "❌"}`, inline: true }
+                            { name: 'Admin', value: `${user.permissions.has(PermissionsBitField.Flags.Administrator) ? "✅" : "❌"}`, inline: true }
                         )
                         .setTimestamp()
                         .setFooter({ text: 'Made with ❤️ by Itz_Toothless#8135', iconURL: client.user.displayAvatarURL({ dynamic: true }) });
