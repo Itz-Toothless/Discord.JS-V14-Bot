@@ -19,6 +19,11 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
+    try{
+    client.user.setActivity('discord.js v14.3.0', { type: ActivityType.Watching });
+    } catch(err) {
+        console.log(err)
+    }
     console.log(`${client.user.tag} is up and ready!`);
 });
 
