@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, ActivityType } = require('discord.js');
 require('dotenv').config();
 const chalk = require('chalk');
 
@@ -19,11 +19,7 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
-    try{
     client.user.setActivity('discord.js v14.3.0', { type: ActivityType.Watching });
-    } catch(err) {
-        console.log(err)
-    }
     console.log(`${client.user.tag} is up and ready!`);
 });
 
