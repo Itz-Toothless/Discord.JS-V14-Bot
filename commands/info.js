@@ -16,7 +16,7 @@ module.exports = {
         .addSubcommand(subcommand => subcommand.setName('server').setDescription('Shows Info about the current Guild'))
 
         .addSubcommand(subcommand => subcommand.setName('user').setDescription('Shows Info about a specified User')
-            .addUserOption(option => option.setName('target').setDescription('The Member you want Info from')),
+            .addUserOption(option => option.setName('target').setDescription('The Member you want Info from').setRequired(true)),
         )
         .setDMPermission(false),
     async execute(client, interaction) {
@@ -65,7 +65,7 @@ module.exports = {
                             { name: 'ID:', value: `${channel.id}`, inline: true },
                             { name: 'Type:', value: `${channelType(channel)}`, inline: true },
                             { name: 'Position:', value: `${channel.position || "0"}`, inline: true },
-                            { name: 'NSFW:', value: `${channel.nsfw ? "✅" : "❌"}`, inline: true },
+                            { name: 'NSFW:', value: `${channel.nsfw ? "<a:yes:1009852362845868092>" : "<a:no:1009852394898718784>"}`, inline: true },
                             { name: 'Created at:', value: `**<t:${Math.round(parseInt(channel.createdTimestamp) / 1000)}:F>**`, inline: true })
                         .setFooter({ text: `Made with ❤️ by Itz_Toothless#8135`, iconURL: `${client.user.displayAvatarURL({ dynamic: true })}` })
                         .setTimestamp();
@@ -86,8 +86,8 @@ module.exports = {
                             { name: 'ID:', value: `${role.id}`, inline: true },
                             { name: 'Color', value: `${role.hexColor}`, inline: true },
                             { name: 'Position:', value: `${role.position}`, inline: true },
-                            { name: 'Mentionable:', value: `${role.mentionable ? "✅" : "❌"}`, inline: true },
-                            { name: 'Hoist:', value: `${role.hoist ? "✅" : "❌"}`, inline: true },
+                            { name: 'Mentionable:', value: `${role.mentionable ? "<a:yes:1009852362845868092>" : "<a:no:1009852394898718784>"}`, inline: true },
+                            { name: 'Hoist:', value: `${role.hoist ? "<a:yes:1009852362845868092>" : "<a:no:1009852394898718784>"}`, inline: true },
                             { name: 'Created at:', value: `<t:${Math.round(parseInt(role.createdTimestamp) / 1000)}:F>`, inline: true })
                         .setFooter({ text: `Made with ❤️ by Itz_Toothless#8135`, iconURL: `${client.user.displayAvatarURL({ dynamic: true })}` })
                         .setTimestamp();
@@ -115,7 +115,7 @@ module.exports = {
                         .setFooter({ text: 'Made with ❤️ by Itz_Toothless#8135', iconURL: client.user.displayAvatarURL({ dynamic: true }) });
                     return await interaction.reply({ embeds: [serverEmbed] });
                 case 'user':
-                    const user = interaction.options.getMember('target') || interaction.member;
+                    const user = interaction.options.getMember('target');
                     let userEmbed = new EmbedBuilder()
                         .setColor(0x7289DA)
                         .setAuthor({ name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
@@ -127,7 +127,7 @@ module.exports = {
                             { name: 'User Created at', value: `**<t:${Math.round(parseInt(user.user.createdTimestamp) / 1000)}:F>**`, inline: true },
                             { name: 'User Joined at:', value: `**<t:${Math.round(parseInt(user.joinedTimestamp) / 1000)}:F>**` },
                             { name: 'Roles', value: `${user.roles.cache.map(r => r.name).join('\n')}` },
-                            { name: 'Admin', value: `${user.permissions.has(PermissionsBitField.Flags.Administrator) ? "✅" : "❌"}`, inline: true }
+                            { name: 'Admin', value: `${user.permissions.has(PermissionsBitField.Flags.Administrator) ? "<a:yes:1009852362845868092>" : "<a:no:1009852394898718784>"}`, inline: true }
                         )
                         .setTimestamp()
                         .setFooter({ text: 'Made with ❤️ by Itz_Toothless#8135', iconURL: client.user.displayAvatarURL({ dynamic: true }) });
