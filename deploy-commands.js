@@ -4,6 +4,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord.js');
 const { clientId, guildId } = require('./config.json');
 require('dotenv').config();
+const chalk = require('chalk');
 
 const commands = [];
 const commandsPath = path.join(__dirname, 'commands');
@@ -19,4 +20,4 @@ const rest = new REST({ version: '10' }).setToken(process.env.token);
 
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
   .then(() => console.log('Successfully registered application commands.'))
-  .catch(console.error);
+  .catch((err) => console.log(chalk.bgRedBright(err));
